@@ -1,40 +1,47 @@
-# Domineering-game
-Explanation of functions used in the project: 
+# Domino game with AI
 
-1.	DrawTable(row, column, matrix)
-Plot a table in the console. 
-Row - Number of species
-Column - Number of columns
-Matrix – current state of the board (memory of occupied and free positions). Each field of this matrix (list list) is a bluple in which the first data remembers information about whether it is a human(0) or a computer (1) (initially 2) and the second data its designation ("X" or "O") (initially " ").
+This project is a console-based turn-based board game implemented in Python.  
+The game supports a human player and a computer player, with the computer making decisions using the **Minimax algorithm** with **alpha-beta pruning**.
 
-2.	CreateMatrix(row, column)
-Defining a matrix to remember the state of the table.
+## Features
 
-3.	IsValidMove(move, matrix, player, column, row)
-Check if the tile is off the board, that it does not stick out of the board, and that it does not match any of the tiles already placed. 
-Move – a tuple in which the first data is a type number and the second is the column label of a particular stroke
-Player — a tuple in which the first data remembers information about whether it is a human or a computer, and the second data its tag ("X" or "O"). "X" always plays first.
+- Dynamic board creation based on user-defined dimensions
+- Console-based board rendering
+- Input validation for player moves
+- Support for two different piece placements:
+  - **X** pieces are placed vertically
+  - **O** pieces are placed horizontally
+- Endgame detection based on available valid moves
+- AI opponent using:
+  - Minimax search
+  - Alpha-beta pruning
+  - Heuristic state evaluation
 
-4.	PlayMove(matrix, player, move, column, row)
-Function for playing moves (filling the corresponding positions on the board (parameter move) played by the player who is in line).
+## How it works
 
-5.	InputMoveValidation(input)
-Validate an entry.
-Input – a string entered by the user when playing a move. It must be the shape of the <type><space><column>
+The game starts by asking the user to enter:
+- the number of rows
+- the number of columns
+- whether the first player is the human or the computer
 
-6.	ConvertInputMove(input)
-Converting from string to tuple. Tuple is actually a parameter of the other functions in which it occurs.
+The board is then created and displayed in the console.
 
-7.	EndGame(matrix, player, column, row)
-Function to check the end game.
+Players take turns placing pieces on the board:
+- Player **X** places pieces vertically
+- Player **O** places pieces horizontally
 
-8.	StartGame()
-Main function
+The game ends when the current player has no valid moves left.  
+The other player is declared the winner.
 
-9.	AvailableMoves (matrix, player, column, row )
-A function to determine all possible moves of a particular player. 
-As part of this function, the boards are drawn with all possible strokes, one by one. The return value of this function is a list of tuples that represent all possible moves. 
+## Project structure
 
-10.	 DeleteMove (matrix, move, player, row)
-Function to delete a specific move (move) of a specific player. This function is called within the AvailableMove function. 
+The project includes functions for:
 
+- creating and displaying the board
+- validating and converting user input
+- checking whether a move is valid
+- placing and removing moves
+- generating all available moves
+- evaluating board states
+- running the Minimax algorithm with alpha-beta pruning
+- managing the game loop
